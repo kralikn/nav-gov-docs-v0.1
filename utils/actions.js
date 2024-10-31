@@ -8,6 +8,7 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 import { createClient } from "./supabase/server";
+import { headers } from "next/headers"
 
 
 export async function signOut() {
@@ -18,11 +19,17 @@ export async function signOut() {
 
 export async function socialAuth() {
 
+  const o = await headers()
+  const origin = o.get('origin')
+
+  console.log("origin1: ", origin1);
+
   const supabase = await createClient()
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${process.env.BASIC_URL}/auth/callback`,
+      // redirectTo: `https://nav-gov-docs.vercel.app/auth/callback`,
+      redirectTo: `${origin}/auth/callback`,
       queryParams: {
         access_type: 'offline',
         prompt: 'consent',
