@@ -4,7 +4,6 @@ import axios from "axios"
 import * as cheerio from 'cheerio'
 import { v4 as uuidv4 } from 'uuid'
 
-import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 import { createClient } from "./supabase/server";
@@ -23,7 +22,6 @@ export async function socialAuth() {
   const origin = o.get('origin')
 
   if (origin) {
-    console.log("origin1: ", origin)
     const supabase = await createClient()
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -227,6 +225,7 @@ export async function uploadDoc({ docData, groupTitle, newNavDocSlug }) {
     return { message: "A fizet feltölve" }
 
   } else { newNavDocSlug.length === 4 } {
+    const year = newNavDocSlug
     const { data, error } = await supabase.storage
       .from('nav-gov-docs')
       .upload(`${year}/${folderName}/${fileName}`, pdfBlob, {
