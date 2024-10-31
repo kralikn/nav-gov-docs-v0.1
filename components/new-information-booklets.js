@@ -32,7 +32,7 @@ export default function NewInformationBooklets({ newNavDocSlug }) {
             {item.urlData.map(linkData => {
               return (
                 <div key={linkData.urlTitle} className="flex justify-between items-center gap-4">
-                  <div className="flex space-x-4">
+                  <div className="flex items-start space-x-4">
                     <p>{linkData.urlTitle}</p>
                     {!linkData.isExistInDB && <Badge className="bg-yellow-400">Új</Badge>}
                   </div>
