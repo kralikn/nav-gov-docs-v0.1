@@ -34,7 +34,7 @@ export default function NewInformationBooklets({ newNavDocSlug }) {
                 <div key={linkData.urlTitle} className="flex justify-between items-center gap-4">
                   <div className="flex space-x-4">
                     <p>{linkData.urlTitle}</p>
-                    {!linkData.isExistInDB && <Badge className="bg-yellow-400">Új információs füzet</Badge>}
+                    {!linkData.isExistInDB && <Badge className="bg-yellow-400">Új</Badge>}
                   </div>
                   <UploadDocButton docData={linkData} groupTitle={item.groupTitle} isExist={linkData.isExistInDB} newNavDocSlug={newNavDocSlug} queryClient={queryClient} />
                 </div>
