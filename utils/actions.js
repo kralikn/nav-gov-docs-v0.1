@@ -22,24 +22,26 @@ export async function socialAuth() {
   const o = await headers()
   const origin = o.get('origin')
 
-  console.log("origin1: ", origin1);
+  if (origin) {
+    console.log("origin1: ", origin)
+    const supabase = await createClient()
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        // redirectTo: `https://nav-gov-docs.vercel.app/auth/callback`,
+        redirectTo: `${origin}/auth/callback`,
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent',
+        }
+      },
+    })
 
-  const supabase = await createClient()
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      // redirectTo: `https://nav-gov-docs.vercel.app/auth/callback`,
-      redirectTo: `${origin}/auth/callback`,
-      queryParams: {
-        access_type: 'offline',
-        prompt: 'consent',
-      }
-    },
-  })
-
-  if (data.url) {
-    redirect(data.url) // use the redirect API for your server framework
+    if (data.url) {
+      redirect(data.url) // use the redirect API for your server framework
+    }
   }
+
 }
 
 export async function getNavDocsData(originalFilename) {
