@@ -513,27 +513,29 @@ export async function signOut() {
 
 export async function socialAuth() {
 
-  const o = await headers()
-  const origin = o.get('origin')
+  // const o = await headers()
+  // const origin = o.get('origin')
 
-  if (origin) {
-    const supabase = await createClient()
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        // redirectTo: `https://nav-gov-docs.vercel.app/auth/callback`,
-        redirectTo: `${origin}/auth/callback`,
-        queryParams: {
-          access_type: 'offline',
-          prompt: 'consent',
-        }
-      },
-    })
+  // const supabase = await createClient()
 
-    if (data.url) {
-      redirect(data.url) // use the redirect API for your server framework
-    }
+  // if (origin) {
+  const supabase = await createClient()
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      // redirectTo: `https://nav-gov-docs.vercel.app/auth/callback`,
+      redirectTo: `${process.env.BASIC_URL}/auth/callback`,
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent',
+      }
+    },
+  })
+
+  if (data.url) {
+    redirect(data.url) // use the redirect API for your server framework
   }
+  // }
 
 }
 
