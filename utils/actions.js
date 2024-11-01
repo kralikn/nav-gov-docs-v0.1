@@ -14,7 +14,7 @@ import { WebPDFLoader } from "@langchain/community/document_loaders/web/pdf"
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter'
 import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
 import { OpenAIEmbeddings } from "@langchain/openai";
-import { encoding_for_model } from "tiktoken";
+// import { encoding_for_model } from "tiktoken";
 import OpenAI from 'openai';
 // -----LangChain && openAI-------------------------------------------------------------------------------
 
@@ -364,6 +364,7 @@ export async function uploadDoc({ docData, groupTitle, newNavDocSlug }) {
 // ------ embedding ---------------------------------------------------------------------------------------
 // itt kell folytatni
 // frontend a z embedding gomb külön komponens legyen
+// tiktoken hiba, kezelni kell majd, most kivettem a package.json-ből
 
 export const createDocument = async (docId) => {
 

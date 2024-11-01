@@ -32,7 +32,6 @@
     "supabase": "^1.207.9",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
-    "tiktoken": "^1.0.17",
     "uuid": "^11.0.2"
   },
   "devDependencies": {
