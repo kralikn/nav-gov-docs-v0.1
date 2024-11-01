@@ -1,4 +1,4 @@
-import { FileStack, SearchCode, FileUp, Users } from 'lucide-react';
+import { FileStack, SearchCode, FileUp, Users, MessageCircleMore } from 'lucide-react';
 
 const links = [
   {
@@ -20,7 +20,12 @@ const links = [
     href: '/users',
     label: 'felhasználók',
     icon: <Users />,
-  }
+  },
+  // {
+  //   href: '/nav-docs/chat',
+  //   label: 'chat',
+  //   icon: <MessageCircleMore />,
+  // }
 ];
 
 export default links;

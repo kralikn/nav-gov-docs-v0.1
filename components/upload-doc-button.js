@@ -12,7 +12,7 @@ export default function UploadDocButton({ docData, groupTitle, isExist, newNavDo
   const { mutate, isPending } = useMutation({
     mutationFn: (values) => uploadDoc(values),
     onSuccess: (data) => {
-      console.log(data);
+
       if (!data) {
         toast({
           description: 'Valami hiba történt...',
@@ -22,6 +22,12 @@ export default function UploadDocButton({ docData, groupTitle, isExist, newNavDo
       toast({ description: 'A füzet feltöltve.' })
       queryClient.invalidateQueries({ queryKey: ['new-booklets', newNavDocSlug] });
       // queryClient.invalidateQueries({ queryKey: ['curr-and-last-year-folders'] });
+    },
+    onError: () => {
+      toast({
+        description: 'Valami hiba történt...',
+      });
+      return;
     }
   })
 

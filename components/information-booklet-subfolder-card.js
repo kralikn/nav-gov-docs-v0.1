@@ -4,7 +4,7 @@ import { Card, CardFooter, CardHeader, CardTitle } from "./ui/card"
 
 const checkSubfolderName = (title) => {
   let folderName = ""
-  switch(title) {
+  switch (title) {
     case "szja":
       folderName = "Személyi jövedelemadó és a foglalkoztatáshoz kapcsolódó járulékok, más közterhek"
       break;
@@ -32,17 +32,17 @@ const checkSubfolderName = (title) => {
 }
 
 export default function InformationBookletSubfolderCard({ subfolderData, mainFolderSlug }) {
-  
+
   // const subfolderName = checkSubfolderName(subfolderData.name)
-  
+
   return (
     <Card className="flex flex-col justify-between">
       <CardHeader>
-        <CardTitle>{`${subfolderData.group_title}`}</CardTitle>
+        <CardTitle>{`${subfolderData.doc_group_title}`}</CardTitle>
       </CardHeader>
       <CardFooter>
         <Button asChild variant="secondary">
-          <Link href={`/main-folders/information-booklet/${mainFolderSlug}/${subfolderData.subfolder}`}>
+          <Link href={`/main-folders/information-booklet/${mainFolderSlug}/${subfolderData.doc_subfolders}`}>
             Dokumentumok
           </Link>
         </Button>
